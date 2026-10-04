@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Merge AI Bridge",
+  "version": "0.1.0",
+  "description": "Connects Chrome tabs to the Merge AI local bridge (127.0.0.1:8765).",
+  "permissions": ["tabs", "scripting", "activeTab"],
+  "host_permissions": ["http://127.0.0.1:8765/*", "http://localhost:8765/*", "<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Merge AI Bridge"
+  }
+}
